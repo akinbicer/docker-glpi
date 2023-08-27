@@ -8,7 +8,7 @@ This document provides step-by-step instructions on how to run the GLPI applicat
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Notes
-- GLPI data is stored in the `./var/www/html/glpi` directory and is persistent. Be sure to backup this directory and take security precautions.
+- GLPI data is stored in the `/var/www/html/glpi` directory and is persistent. Be sure to backup this directory and take security precautions.
 - You can manage database settings in the `.env` file, and it does not require containers to be restarted.
 
 ## Installation
@@ -18,7 +18,7 @@ This document provides step-by-step instructions on how to run the GLPI applicat
    git clone https://github.com/akinbicer/docker-glpi.git
    cd docker-glpi
    ```
-2. Edit the `installations\environments\db.env` file to specify your desired database and GLPI application settings.
+2. Edit the `installations/environments/db.env` file to specify your desired database and GLPI application settings.
 3. Start the containers using Docker Compose:
    ```bash
    docker-compose up -d

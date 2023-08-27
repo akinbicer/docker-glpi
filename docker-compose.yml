@@ -1,0 +1,32 @@
+version: "3.8"
+name: glpi
+
+services:
+  db:
+    image: mariadb:10.7
+    container_name: db.glpi.local
+    hostname: db.glpi.local
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    env_file:
+      - ./installations/environments/db.env
+    restart: always
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app.glpi.local
+    hostname: app.glpi.local
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /var/www/html/glpi/:/var/www/html/glpi
+    environment:
+      - TIMEZONE=Europe/Istanbul
+    restart: always
